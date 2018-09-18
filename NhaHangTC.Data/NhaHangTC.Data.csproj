@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{752C1F0E-DA64-459C-B3F9-DB195669FFD2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NhaHangTC.Data</RootNamespace>
+    <AssemblyName>NhaHangTC.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Infrastructure\DbFactory.cs" />
+    <Compile Include="Infrastructure\Disposable.cs" />
+    <Compile Include="Infrastructure\IDbFactory.cs" />
+    <Compile Include="Infrastructure\IRepository.cs" />
+    <Compile Include="Infrastructure\IUnitOfWork.cs" />
+    <Compile Include="Infrastructure\RepositoryBase.cs" />
+    <Compile Include="Infrastructure\UnitOfWork.cs" />
+    <Compile Include="Migrations\201809101338196_InitialDB.cs" />
+    <Compile Include="Migrations\201809101338196_InitialDB.Designer.cs">
+      <DependentUpon>201809101338196_InitialDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="NhaHangTCDbContext.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\BanRepository.cs" />
+    <Compile Include="Repositories\ChiTietGioHangRepository.cs" />
+    <Compile Include="Repositories\ChiTietHoaDonRepository.cs" />
+    <Compile Include="Repositories\ChiTietPhieuNhapRepository.cs" />
+    <Compile Include="Repositories\ChucVuRepository.cs" />
+    <Compile Include="Repositories\DonDatBanRepository.cs" />
+    <Compile Include="Repositories\DonViTinhRepository.cs" />
+    <Compile Include="Repositories\DuyetGioHangRepository.cs" />
+    <Compile Include="Repositories\ErrorRepository.cs" />
+    <Compile Include="Repositories\GioHangRepository.cs" />
+    <Compile Include="Repositories\HinhAnhRepository.cs" />
+    <Compile Include="Repositories\HoaDonRepository.cs" />
+    <Compile Include="Repositories\KhachHangRepository.cs" />
+    <Compile Include="Repositories\LoaiKhachHangRepository.cs" />
+    <Compile Include="Repositories\LoaiMonAnRepository.cs" />
+    <Compile Include="Repositories\MonAnRepository.cs" />
+    <Compile Include="Repositories\NhaCungCapRepository.cs" />
+    <Compile Include="Repositories\NhaHangRepository.cs" />
+    <Compile Include="Repositories\NhanVienRepository.cs" />
+    <Compile Include="Repositories\PhieuNhapRepository.cs" />
+    <Compile Include="Repositories\TaiKhoanRepository.cs" />
+    <Compile Include="Repositories\TangRepository.cs" />
+    <Compile Include="Repositories\ThucPhamRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201809101338196_InitialDB.resx">
+      <DependentUpon>201809101338196_InitialDB.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NhaHangTC.Common\NhaHangTC.Common.csproj">
+      <Project>{bb171536-6135-4e44-9c13-69f7faff5de5}</Project>
+      <Name>NhaHangTC.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NhaHangTC.Model\NhaHangTC.Model.csproj">
+      <Project>{3de76f66-7af8-4cef-9c91-552041f5f70b}</Project>
+      <Name>NhaHangTC.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
