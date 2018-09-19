@@ -5,10 +5,11 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace NhaHangTC.Data
 {
-    public class NhaHangTCDbContext : DbContext
+    public class NhaHangTCDbContext : IdentityDbContext<TaiKhoanUser>
     {
         public NhaHangTCDbContext() : base("QLNHAHANGTHANHCONG")
         {
@@ -36,7 +37,7 @@ namespace NhaHangTC.Data
         public DbSet<NhaHang> NhaHangs { set; get; }
         public DbSet<NhanVien> NhanViens { set; get; }
         public DbSet<PhieuNhap> PhieuNhaps { set; get; }
-        public DbSet<TaiKhoanUser> TaiKhoans { set; get; }
+        public DbSet<TaiKhoanUser> TaiKhoanUsers { set; get; }
         //public IDbSet<TaiKhoan> users { set; get; }
         //public virtual IDbSet<IUser> Users { get; set; }
         //public DbSet<TaiKhoan> IdentityUsers { get; set; }
@@ -52,8 +53,8 @@ namespace NhaHangTC.Data
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<DonDatBan>().HasRequired(d => d.KhachHang).WithOptional(k => k.DonDatBan).Map(l => l.MapKey("MAKH"));
-            //modelBuilder.Entity<KhachHang>().HasRequired(k => k.DonDatBan).WithMany().HasForeignKey(k => k.MADATBAN);
-            //modelBuilder.Entity<DonDatBan>().HasOptional(b => b.KhachHang).WithMany().HasForeignKey(b => b.MADATBAN);
+            modelBuilder.Entity<IdentityUserRole>().HasKey(i => i.UserId);
+            modelBuilder.Entity<IdentityUserLogin>().HasKey(i => i.UserId);
             base.OnModelCreating(modelBuilder);
         }
     }

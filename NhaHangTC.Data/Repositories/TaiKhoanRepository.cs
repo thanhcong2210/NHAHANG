@@ -21,7 +21,7 @@ namespace NhaHangTC.Data.Repositories
 
         public IEnumerable<TaiKhoanUser> GetListAll(int page, int pageSize, out int totalRow)
         {
-            var query = from tk in DbContext.TaiKhoans
+            var query = from tk in DbContext.TaiKhoanUsers
                         select tk;
             totalRow = query.Count();
             return query.OrderByDescending(x => x.MANV).Skip((page - 1) * pageSize).Take(pageSize);
@@ -30,7 +30,7 @@ namespace NhaHangTC.Data.Repositories
 
         public IEnumerable<TaiKhoanUser> GetListTKTheoNV(string tennv, int page, int pageSize, out int totalRow)
         {
-            var query = from tk in DbContext.TaiKhoans
+            var query = from tk in DbContext.TaiKhoanUsers
                         join nv in DbContext.NhanViens
                         on tk.MANV equals nv.MANV
                         where nv.HOTEN_NV == tennv

@@ -1,4 +1,4 @@
-﻿scotchApp.controller('monanListController', function ($scope) {
+﻿NhaHangApp.controller('monanListController', function ($scope) {
 
     $scope.message = 'test';
 

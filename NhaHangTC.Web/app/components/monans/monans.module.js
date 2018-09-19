@@ -1,25 +1,19 @@
-﻿
-// create the module and name it scotchApp
-var monans = angular.module('monans', ['ngRoute']);
+﻿//monans.modules.js
+var NhaHangApp = angular.module('NhaHangApp', ['ui.router']);
 
-// configure our routes
-monans.config(function ($routeProvider) {
-    $routeProvider
+NhaHangApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
+    // For any unmatched url, send to /business
+    $urlRouterProvider.otherwise("/")
 
-        // route for the about page
-        .when('/monans', {
+    $stateProvider
+        .state('monans', {//nested state [products is the nested state of business state]
+            url: "/monans",
             templateUrl: '/app/components/monans/monanListView.html',
             controller: 'monanListController'
         })
-
-        // route for the contact page
-        .when('/contact', {
-            templateUrl: 'pages/contact.html',
-            controller: 'contactController'
+        .state('home', {//State demonstrating Nested views
+            url: "/home",
+            templateUrl: '/app/components/home/homeView.html',
+            controller: 'homeController'
         });
-});
-
-
-monans.controller('monanListController', function ($scope) {
-    $scope.message = 'danh sach mon an';
-});
+}]);

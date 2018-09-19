@@ -36,7 +36,7 @@ namespace NhaHangTC.Data.Repositories
         public IEnumerable<DonDatBan> GetListDonDatTheoTK(string tk, int page, int pageSize, out int totalRow)
         {
             var query = from d in DbContext.DonDatBans
-                        join t in DbContext.TaiKhoans
+                        join t in DbContext.TaiKhoanUsers
                         on d.MATAIKHOAN equals t.MATAIKHOAN
                         join n in DbContext.NhanViens
                         on t.MANV equals n.MANV
